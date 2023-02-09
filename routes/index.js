@@ -16,7 +16,7 @@ router.get('/contact', (req, res)=>{
     res.render ("contact",{tittle: 'Satnetwork- Contact Us'}) 
 })
 router.post('/send', async (req, res)=>{
-   const output = '<p> You have a new Message </p> <h3> Details</h3><li> Name: ${req.body.name} </li> <li> Email: ${req.body.email}</li> <li> Subject: ${req.body.subject}</li><h3> <h3> Message: </h3><p>${req.body.message}</p> ';
+   //const output = '<p> You have a new Message </p> <h3> Details</h3><li> Name: ${req.body.name} </li> <li> Email: ${req.body.email}</li> <li> Subject: ${req.body.subject}</li><h3> <h3> Message: </h3><p>${req.body.message}</p> ';
     // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -38,7 +38,11 @@ router.post('/send', async (req, res)=>{
     to: "kipngeno4059@gmail.com", // list of receivers
     subject: "Satnetwork Africa", // Subject line
     text: "Hello world?", // plain text body
-    html: output // html body
+    html: `You got a message from 
+    Email : ${req.body.email}
+    Name: ${req.body.name}
+    Subject: ${req.body.subject}
+    Message: ${req.body.message}`, // html body
   }); 
 
   console.log("Message sent: %s");
