@@ -1,3 +1,5 @@
+
+require('dotenv').config()
 const express= require('express')
 var expressLayouts = require('express-ejs-layouts');
 var bodyParser = require('body-parser')
@@ -16,6 +18,10 @@ app.use(expressLayouts);
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json())
+
+app.set("layout products", false);
+app.set("layout about", false);
+app.set("layout contact", false);
 // Express session
 
 app.use(session({
